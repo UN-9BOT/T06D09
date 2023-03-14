@@ -1,28 +1,22 @@
-/*------------------------------------
-	Здравствуй, человек!
-	Чтобы получить ключ 
-	поработай с комментариями.
--------------------------------------*/
-
 #include <stdio.h>
 #define NMAX 10
 
-void input (int *buffer, int *length, int *);
-void output (int *buffer, int length);
-int sum_numbers(int *buffer, int length);
-void find_numbers(int* buffer, int length, int number, int* numbers);
+void input (int *, int *, int *);
+void output (int *, int, int);
+int sum_numbers(int *, int );
+int find_numbers(int *, int, int, int *);
 
 int main() {
-    int n, buffer[NMAX], numbers[NMAX], number;
+    int nD, nN, data[NMAX], numbers[NMAX], res_number;
     int flag = 0;
 
-    input(buffer, &n, &flag);
-    if (flag != 1) {
+    input(data, &nD, &flag);
+    if (flag == 1) {
         printf("n/a");
     } else {
-        number = sum_numbers(buffer, n);
-        find_numbers(buffer, n, number, numbers);
-        output(numbers, n);
+        res_number = sum_numbers(data, nD);
+        nN = find_numbers(data, nD, nN, numbers);
+        output(numbers, nN, number);
     }
     return (0);
 }
@@ -30,9 +24,9 @@ int main() {
 int sum_numbers(int *buffer, int length) {
 	int sum = 0;
 	
-	for (int i = 1; i < length; i++)
+	for (int i = 0; i < length; i++)
 	{
-		if (i % 2 == 0)
+		if (*(buffer + i) % 2 == 0)
 		{
 			sum += buffer[i];
 		}
@@ -41,10 +35,15 @@ int sum_numbers(int *buffer, int length) {
 	return sum;
 }
 
-void find_numbers(int* buffer, int length, int number, int* numbers) {
-    for (int i = 0, k = 0; i < length; i++) {
-        if (*(buffer + i) % number == 0) { *(numbers + k++) = *(buffer + i); }
+int find_numbers(int* data, int length, int number, int* numbers) {
+    int k = 0;
+    for (int i = 0; i < length; i++) {
+        if (*(buffer + i) % number == 0) { 
+            *(numbers + k) = *(buffer + i); 
+            k++;
+        }
     }
+    return (k);
 }
 
 void input(int *data, int *n, int *flag) {
@@ -52,10 +51,18 @@ void input(int *data, int *n, int *flag) {
     if (scanf("%d.%d", n, &k) != 1) {
         *flag = 1;
     } else {
-        for (int i = 0; i < NMAX; i++) {
+        for (int i = 0; i < *n; i++) {
             if (scanf("%d.%d", (data + i), &k) != 1) {
                 *flag = 1;
             }
         }
     }
+}
+
+void output(int *buffer, int n, int number) {
+    printf("%d\n", number);
+    for (int i = 0; i < n - 1; i++) {
+        printf("%d ", *(buffer + i));
+    }
+    printf("%d", *(buffer + n));
 }
