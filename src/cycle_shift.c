@@ -5,13 +5,14 @@ void output(int *, int);
 void shift(int *, int, int *, int);
 
 int main(void) {
-    int n, data[NMAX], nData[NMAX], flag, vShift;
+    int n, data[NMAX], flag, vShift;
 
     flag = 0;
     input(data, &n, &flag, &vShift);
     if (flag == 1) {
         printf("n/a");
     } else {
+        int nData[NMAX];
         shift(data, n, nData, vShift);
         output(nData, n);
     }

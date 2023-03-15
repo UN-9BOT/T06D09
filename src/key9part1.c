@@ -7,13 +7,14 @@ int sum_numbers(int *, int);
 int find_numbers(int *, int, int, int *);
 
 int main() {
-    int nD, nN, data[NMAX], numbers[NMAX], res_number;
+    int nD, data[NMAX];
     int flag = 0;
 
     input(data, &nD, &flag);
     if (flag == 1) {
         printf("n/a");
     } else {
+        int nN, numbers[NMAX], res_number;
         res_number = sum_numbers(data, nD);
         nN = find_numbers(data, nD, res_number, numbers);
         output(res_number, nN, numbers);
