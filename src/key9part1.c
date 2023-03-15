@@ -46,7 +46,7 @@ int find_numbers(int *data, int nD, int res_number, int *numbers) {
 
 void input(int *data, int *n, int *flag) {
     int k;
-    if (scanf("%d.%d", n, &k) != 1 || *n > NMAX) {
+    if (scanf("%d.%d", n, &k) != 1 || *n > NMAX || *n <= 0) {
         *flag = 1;
     } else {
         for (int i = 0; i < *n; i++) {

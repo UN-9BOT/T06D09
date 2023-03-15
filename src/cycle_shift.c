@@ -41,7 +41,7 @@ void shift(int *data, int n, int *nData, int sh) {
 
 void input(int *data, int *n, int *flag, int *vShift) {
     int k;
-    if (scanf("%d.%d", n, &k) != 1 || *n > NMAX) {
+    if (scanf("%d.%d", n, &k) != 1 || *n > NMAX || *n <= 0) {
         *flag = 1;
     } else {
         for (int i = 0; i < *n; i++) {
