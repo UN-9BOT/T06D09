@@ -63,5 +63,5 @@ void output(int *data) {
     for (int i = 0; i < NMAX - 1; i++) {
         printf("%d ", *(data + i));
     }
-    printf("%d", *(data + NMAX));
+    printf("%d", *(data + NMAX - 1));
 }
